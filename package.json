@@ -1,0 +1,31 @@
+{
+  "name": "prebuilt-example",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nan": "^2.8.0",
+    "node-gyp-build": "^3.2.2"
+  },
+  "devDependencies": {
+    "node-gyp": "^3.6.2",
+    "prebuildify": "^2.4.3",
+    "tape": "^4.8.0"
+  },
+  "scripts": {
+    "test": "tape test.js",
+    "prebuild": "prebuildify -a --strip ",
+    "prebuild-ia32": "prebuildify -a --strip --arch=ia32"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilbayes/prebuilt-example.git"
+  },
+  "keywords": [],
+  "author": "Emil Bay <github@tixz.dk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilbayes/prebuilt-example/issues"
+  },
+  "homepage": "https://github.com/emilbayes/prebuilt-example#readme"
+}
