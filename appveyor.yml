@@ -17,12 +17,16 @@ test_script:
   - npm --version
   - npm test
 
-before_deploy:
+build_script:
+  - echo true
+
+after_test:
   - npm run prebuild
 
 artifacts:
   - path: prebuilds
     name: $(APPVEYOR_REPO_TAG_NAME)-win-$(PLATFORM)
+    type: zip
 
 deploy:
   - provider: GitHub
