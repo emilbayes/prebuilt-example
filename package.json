@@ -13,6 +13,7 @@
     "tape": "^4.8.0"
   },
   "scripts": {
+    "install": "node-gyp-build",
     "test": "tape test.js",
     "prebuild": "prebuildify -a --strip ",
     "prebuild-ia32": "prebuildify -a --strip --arch=ia32"
