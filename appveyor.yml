@@ -1,0 +1,35 @@
+environment:
+  matrix:
+    - nodejs_version: "9"
+
+platform:
+  - x86
+  - x64
+
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  - npm run fetch-libsodium
+  - npm install
+
+test_script:
+  - node --version
+  - npm --version
+  - npm test
+
+before_deploy:
+  - npm run prebuild
+
+artifacts:
+  - path: prebuilds
+    name: $(APPVEYOR_REPO_TAG_NAME)-win-$(PLATFORM)
+
+deploy:
+  - provider: GitHub
+    artifact: /.*\.zip/
+    auth_token:
+      secure: LEM/UrsMLRmWAFIkJNW7BNQyHIjnXKl9joSywUMq/1QAjhFofvF30FaDLrtuu4ie
+    draft: false
+    prerelease: false
+    on:
+      branch: master
+      appveyor_repo_tag: true
